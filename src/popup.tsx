@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import { Action } from "./content_script";
 
 const Popup = () => {
   const [count, setCount] = useState(0);
@@ -15,17 +16,17 @@ const Popup = () => {
     });
   }, []);
 
-  const changeBackground = () => {
+  const getPageSource = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       const tab = tabs[0];
       if (tab.id) {
+        alert('sending message')
         chrome.tabs.sendMessage(
           tab.id,
           {
-            color: "#555555",
+            action: Action.GetSource
           },
           (msg) => {
-            console.log("result message:", msg);
           }
         );
       }
@@ -44,7 +45,7 @@ const Popup = () => {
       >
         count up
       </button>
-      <button onClick={changeBackground}>change background</button>
+      <button onClick={getPageSource}>Get Page Source</button>
     </>
   );
 };

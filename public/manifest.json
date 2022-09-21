@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
 
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "Rambo",
+  "description": "Rambo Programming Search Optimizer",
   "version": "1.0",
 
   "options_ui": {
@@ -26,7 +26,9 @@
   },
 
   "permissions": [
-    "storage"
+    "storage",
+    "tabs",
+    "<all_urls>"
   ],
 
   "host_permissions": [
